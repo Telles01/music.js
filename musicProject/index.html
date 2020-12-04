@@ -15,6 +15,9 @@
     .whitenote {
       height: 100%;
       width: 50px;
+      background: white;
+      float: left;
+      border-right: 1px solid black;
     }
   </style>
 </head>
@@ -28,9 +31,14 @@
   <script>
     var notes = ["C", "D", "E", "F", "G", "A", "B" ];
 
+    
+
     var html = "";
     for (var i = 0; i < notes.length; i++) {
-      html += `<div class='whitenote'></div>`;
+      var note= notes[i];
+      html += `<div class='whitenote'
+          onmousedown='noteDown(this)'
+          data-note></div>`;
     }
     document.getElementById('container').innerHTML =
   </script>
