@@ -21,6 +21,16 @@
       float: left;
       border-right: 1px solid black;
       
+      
+    }
+
+    .blacknote {
+      position: absolute;
+      height: 65px;
+      width: 55px;
+      z-index: 1;
+      background: #777;
+      left: 68px;
     }
   </style>
 </head>
@@ -39,10 +49,13 @@
 
     var html = "";
     for (var i = 0; i < notes.length; i++) {
+      var hasSharp = true;
       var note= notes[i];
+
+      if (note == 'E')
       html += `<div class='whitenote'
           onmousedown='noteDown(this)'
-          data-note=' ${note}></div>`;
+          data-note=' ${note + '4'}></div>`;
     }
     document.getElementById('container').innerHTML = html;
     function noteDown(elem) {
