@@ -65,6 +65,13 @@
       html += `<div class='whitenote'
           onmousedown='noteDown(this)'
           data-note=' ${note + '4'}></div>`;
+
+      if (hasSharp){
+        html += `<div class='blacknote' onmousedown='noteDown(
+          this)' data-note='${note + '#' + (octave+4)}
+          '></div>`;
+      } 
+      html += '</div>;'   
     }
     document.getElementById('container').innerHTML = html;
     function noteDown(elem) {
