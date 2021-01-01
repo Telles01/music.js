@@ -86,7 +86,13 @@
   }
 
     
-
+function noteDown(elem, isSharp){
+  var note = elem.dataset.note;
+  //alert(note);
+  elem.style.background = isSharp ? 'black' : '#ccc';
+  synth.triggerAttackRelease(note, "16n");
+  event.stopPropagation();
+}
     var html = "";
     for (var i = 0; i < notes.length; i++) {
       var hasSharp = true;
