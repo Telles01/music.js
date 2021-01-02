@@ -11,8 +11,10 @@
       position: absolute;
       height: 200px;
       border: 5px solid black;
-      background-color: blue;
-      float: left;
+      top:calc(50% - 100px);
+      left:calc(50% - 350px);
+      overflow: hidden;
+      
     }
     .whitenote {
       height: 100%;
@@ -30,7 +32,7 @@
       width: 55px;
       z-index: 1;
       background: #777;
-      left: 68px;
+      left: 71px;
       
       
     }
@@ -82,7 +84,7 @@
   document.getElementById('container').innerHTML= html;
 
   function noteUp(elem, isSharp) {
-
+    elem.style.background = isSharp ? '#777' : 'white';
   }
 
     
