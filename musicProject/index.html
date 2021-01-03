@@ -62,7 +62,7 @@
         var hasSharp = true;
         var note = notes[i];
 
-        if (note == 'E' || note == 'B');
+        if (note == 'E' || note == 'B')
             hasSharp = false;
 
         html += `<div class='whitenote' onmousedown='noteDown
@@ -73,9 +73,6 @@
         if (hasSharp) {
           html += `<div class='blacknote' 
           onmousedown='noteDown(this, true)'
-          onmouseup='noteUp(this, true)'
-          onmouseleave='noteUp(this, true)'
-
           data-note='${note + '#' + (octave+4)}'></div>`;
 
         }
@@ -86,9 +83,7 @@
 
   document.getElementById('container').innerHTML= html;
 
-  function noteUp(elem, isSharp) {
-    elem.style.background = isSharp ? '#777' : 'white';
-  }
+  
 
     
 function noteDown(elem, isSharp){
