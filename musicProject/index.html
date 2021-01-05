@@ -73,7 +73,9 @@
         if (hasSharp) {
           html += `<div class='blacknote' 
           onmousedown='noteDown(this, true)'
-          data-note='${note + '#' + (octave+4)}'></div>`;
+          onmouseup='noteUp(this, true)'
+          onmouseleave='noteUp(this, true)'data-note='
+          ${note + '#' + (octave+4)}'></div>`;
 
         }
         html += '</div>';   
