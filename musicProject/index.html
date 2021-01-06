@@ -34,6 +34,7 @@
       z-index: 1;
       background: #777;
       left: 71%;
+      background-attachment: pink;
       
       
     }
@@ -53,12 +54,8 @@
 
     for (var octave = 0; octave < 2; octave++)
     { 
-      for (var octave = 0; octave = 2; octave++ ){
-        var hasSharp = true;
-        var noteDown = note[i];
-      }
-    {
-      for (var i = 0; i < notes.length; i++){
+
+        for (var i = 0; i < notes.length; i++){
         var hasSharp = true;
         var note = notes[i];
 
@@ -86,8 +83,11 @@
   document.getElementById('container').innerHTML= html;
 
   
+function noteUp(elem, isSharp){
+  elem.style.background = isSharp ? '#777' : 'white';
+}
 
-    
+
 function noteDown(elem, isSharp){
   var note = elem.dataset.note;
   //alert(note);
@@ -114,13 +114,7 @@ function noteDown(elem, isSharp){
     }
     document.getElementById('container').innerHTML = html;
 
-    function noteDown(elem, isSharp) {
-      var note = elem.dataset.note;
-      //alert(note);
-      elem.style.background = isSharp ? 'black' : '#ccc';
-      synth.triggerAttackRelease(note, "16n");
-      event.stopPropagation();
-    }
+    
   </script>
   
 </body>
