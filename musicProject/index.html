@@ -83,7 +83,7 @@ for (var octave = 0; octave < 2; octave++)
     }
 }
 
-  document.getElementById('container').innerHTML= html;
+document.getElementById('container').innerHTML= html;
 
   
 function noteUp(elem, isSharp){
@@ -109,21 +109,3 @@ function noteDown(elem, isSharp){
 
 
 
-var html = "";
-    for (var i = 0; i < notes.length; i++) {
-      var hasSharp = true;
-      var note= notes[i];
-
-      if (note == 'E')
-      html += `<div class='whitenote'
-          onmousedown='noteDown(this)'
-          data-note=' ${note + '4'}></div>`;
-
-      if (hasSharp){
-        html += `<div class='blacknote' onmousedown='noteDown(
-          this)' data-note='${note + '#' + (octave+4)}
-          '></div>`;
-      } 
-      html += '</div>;'   
-    }
-    document.getElementById('container').innerHTML = html;
