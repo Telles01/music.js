@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Music Play</title>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.4.9/Tone.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/
+  tone/14.4.9/Tone.js'></script>
 
   <style>
     #container {
@@ -49,55 +50,66 @@
 
   </div>
 
-  <script>
-    var synth = new Tone.PolySynth().toMaster();
-    var notes = ["C", "D", "E", "F", "G", "A", "B" ];
-    var html = "";
+<script>
+var synth = new Tone.PolySynth().toMaster();
+var notes = ["C", "D", "E", "F", "G", "A", "B" ];
+var html = "";
 
-    for (var octave = 0; octave < 2; octave++)
-    { 
+for (var octave = 0; octave < 2; octave++)
+{ 
+    for (var i = 0; i < notes.length; i++) {
+          var hasSharp = true;
+          var note = notes[i];
 
-        for (var i = 0; i < notes.length; i++){
-        var hasSharp = true;
-        var note = notes[i];
+          if (note == 'E' || note == 'B')
+              hasSharp = false;
 
-        if (note == 'E' || note == 'B')
-            hasSharp = false;
+          html += `<div class='whitenote' onmousedown='noteDown
+              (this, false)'onmouseup='noteUp(this,false)'
+              onmouseleave='noteUp(this, false)' data-note='${
+              note + (octave+4)}'>`;
 
-        html += `<div class='whitenote' onmousedown='noteDown
-        (this, false)'onmouseup='noteUp(this,false)'
-        onmouseleave='noteUp(this, false)'data-note='${
-          note + (octave+4)}'>`;
+          if (hasSharp) {
+              html += `<div class='blacknote' 
+                  onmousedown='noteDown(this, true)'
+                  onmouseup='noteUp(this, true)'
+                  onmouseleave='noteUp(this, true)'data-note='
+                  ${note + '#' + (octave+4)}'></div>`;
 
-        if (hasSharp) {
-          html += `<div class='blacknote' 
-          onmousedown='noteDown(this, true)'
-          onmouseup='noteUp(this, true)'
-          onmouseleave='noteUp(this, true)'data-note='
-          ${note + '#' + (octave+4)}'></div>`;
+          } 
 
-        }
-        html += '</div>';   
+          html += '</div>';   
       
     }
-  }
+}
 
   document.getElementById('container').innerHTML= html;
 
   
 function noteUp(elem, isSharp){
-  elem.style.background = isSharp ? '#777' : 'white';
+    elem.style.background = isSharp ? '#777' : 'white';
 }
 
 
 function noteDown(elem, isSharp){
-  var note = elem.dataset.note;
-  //alert(note);
-  elem.style.background = isSharp ? 'black' : '#ccc';
-  synth.triggerAttackRelease(note, "16n");
-  event.stopPropagation();
+    var note = elem.dataset.note;
+    //alert(note);
+    elem.style.background = isSharp ? 'black' : '#ccc';
+    synth.triggerAttackRelease(note, "16n");
+    event.stopPropagation();
 }
-    var html = "";
+    
+    
+  </script>
+  
+</body>
+</html>
+
+
+
+
+
+var html = "";
     for (var i = 0; i < notes.length; i++) {
       var hasSharp = true;
       var note= notes[i];
@@ -115,9 +127,3 @@ function noteDown(elem, isSharp){
       html += '</div>;'   
     }
     document.getElementById('container').innerHTML = html;
-
-    
-  </script>
-  
-</body>
-</html>
